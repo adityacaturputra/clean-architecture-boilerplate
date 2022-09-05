@@ -1,0 +1,25 @@
+class UserLogin {
+  username: string;
+  password: string;
+  
+  constructor(payload: any) {
+    this._verifyPayload(payload);
+
+    this.username = payload.username;
+    this.password = payload.password;
+  }
+
+  _verifyPayload(payload: any) {
+    const { username, password } = payload;
+
+    if (!username || !password) {
+      throw new Error('USER_LOGIN.NOT_CONTAIN_NEEDED_PROPERTY');
+    }
+
+    if (typeof username !== 'string' || typeof password !== 'string') {
+      throw new Error('USER_LOGIN.NOT_MEET_DATA_TYPE_SPECIFICATION');
+    }
+  }
+}
+
+export default UserLogin;
